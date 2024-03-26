@@ -1,0 +1,12 @@
+Commands to run - 
+dotnet new webapi --use-controllers -o supply_chain_server
+
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Designdotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet tool uninstall -g dotnet-aspnet-codegenerator
+dotnet tool install -g dotnet-aspnet-codegenerator
+dotnet tool update -g dotnet-aspnet-codegenerator
+
+dotnet aspnet-codegenerator controller -name RolesController -async -api -m Role -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name UsersController -async -api -m User -dc SupplyChainDBContext -outDir Controllers
