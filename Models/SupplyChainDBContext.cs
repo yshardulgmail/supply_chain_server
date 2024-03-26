@@ -10,4 +10,5 @@ public class SupplyChainDBContext : DbContext
     }
 
     public DbSet<Role> Roles { get; set; } = null!;
+    public DbSet<User> Users { get; set; } = null!;
 }
