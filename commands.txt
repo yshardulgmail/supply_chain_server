@@ -10,3 +10,6 @@ dotnet tool update -g dotnet-aspnet-codegenerator
 
 dotnet aspnet-codegenerator controller -name RolesController -async -api -m Role -dc SupplyChainDBContext -outDir Controllers
 dotnet aspnet-codegenerator controller -name UsersController -async -api -m User -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name CustomersController -async -api -m Customer -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name ProductsController -async -api -m Product -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name StatusesController -async -api -m Status -dc SupplyChainDBContext -outDir Controllers
