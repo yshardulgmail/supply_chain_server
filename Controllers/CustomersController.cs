@@ -24,6 +24,7 @@ namespace supply_chain_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return await _context.Customers.ToListAsync();
         }
 
@@ -31,6 +32,7 @@ namespace supply_chain_server.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer(int id)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             var customer = await _context.Customers.FindAsync(id);
 
             if (customer == null)
@@ -46,7 +48,8 @@ namespace supply_chain_server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(int id, Customer customer)
         {
-            if (id != customer.Customer_Id)
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            if (id != customer.CId)
             {
                 return BadRequest();
             }
@@ -77,16 +80,18 @@ namespace supply_chain_server.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCustomer", new { id = customer.Customer_Id }, customer);
+            return CreatedAtAction("GetCustomer", new { id = customer.CId }, customer);
         }
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
             {
@@ -101,7 +106,7 @@ namespace supply_chain_server.Controllers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.Customer_Id == id);
+            return _context.Customers.Any(e => e.CId == id);
         }
     }
 }
