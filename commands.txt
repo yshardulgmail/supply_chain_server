@@ -13,3 +13,10 @@ dotnet aspnet-codegenerator controller -name UsersController -async -api -m User
 dotnet aspnet-codegenerator controller -name CustomersController -async -api -m Customer -dc SupplyChainDBContext -outDir Controllers
 dotnet aspnet-codegenerator controller -name ProductsController -async -api -m Product -dc SupplyChainDBContext -outDir Controllers
 dotnet aspnet-codegenerator controller -name StatusesController -async -api -m Status -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name OrdersController -async -api -m Order -dc SupplyChainDBContext -outDir Controllers
+dotnet aspnet-codegenerator controller -name UserRolesController -async -api -m UserRole -dc SupplyChainDBContext -outDir Controllers
+
+
+Alter table commands - 
+EXEC sp_rename 'dbo.User_Roles', 'UserRoles';
+Alter Table UserRoles Add Primary Key User_Id;
