@@ -24,6 +24,7 @@ namespace supply_chain_server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return await _context.Users.ToListAsync();
         }
 

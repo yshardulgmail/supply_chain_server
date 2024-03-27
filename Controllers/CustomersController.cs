@@ -80,10 +80,10 @@ namespace supply_chain_server.Controllers
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
-
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             return CreatedAtAction("GetCustomer", new { id = customer.CId }, customer);
         }
 
